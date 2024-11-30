@@ -1,0 +1,221 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.homeUnderline{
+    width: 61px;
+    height: 6px;
+    background: #317c05;
+    border-radius: 9px;
+}
+
+.homeHeader{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.homeText{
+    color: #317c05;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.toggle-btn {
+    background-color: #ae3b3b;
+    border: 1px solid #aaa;
+    border-radius: 99px;
+    width: 150px;
+    height: 84px;
+    transition: background-color 0.1s ease, border-color 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.toggle-btn .thumb {
+    height: 60px;
+    width: 60px;
+    background-color: #ffff;
+    border-radius: 99px;
+    transform: translateX(0);
+    transition: left 0.15s ease;
+    position: absolute;
+    left: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.toggle-btn .thumb img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+}
+
+.toggle-btn.toggled {
+    background-color: #15b58e;
+}
+
+.toggled-btn:hover {
+    border-color: #6f6f6f;
+}
+
+.toggle-btn.toggled .thumb {
+    left: calc(150px - 75px);
+}
+
+.sign-out-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: #a8a7a7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sign-out-btn:hover {
+    background-color: #545454;
+}
+
+.change-ip-btn {
+    margin-top: 30px;
+    bottom: 20px;
+    left: 20px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.change-ip-btn:hover {
+    background-color: #004d40;
+}
+
+/* Modal overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeInOverlay 0.3s forwards;
+}
+
+/* Modal content */
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeInModal 0.3s forwards;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #004d40;
+}
+
+@keyframes fadeInOverlay {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInModal {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOutOverlay {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOutModal {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+.modal-overlay.closing {
+    animation: fadeOutOverlay 0.3s forwards;
+}
+
+.modal-content.closing {
+    animation: fadeOutModal 0.3s forwards;
+}
+
+.vpn-status-label {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.vpn-status-label {
+    color: #fff;
+}
+
+.vpn-status-label {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    color: #000000;
+    border-radius: 5px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}

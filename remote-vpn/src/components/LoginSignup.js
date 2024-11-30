@@ -10,6 +10,7 @@ const LoginSignup = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
@@ -28,8 +29,12 @@ const LoginSignup = () => {
                 setError("Password must be at least 8 characters long.");
                 return;
             }
+            if (password !== confirmPassword) {
+                setError("Passwords do not match.");
+                return;
+            }
     
-            // Meant to check that a user already exists. Actually implement this check in the backend.
+            // --- Meant to check that a user already exists. Actually implement this check in the backend. ---
             const existingUsers = [
                 { email: "test@example.com", password: "password123" }
             ];
@@ -43,7 +48,8 @@ const LoginSignup = () => {
             console.log("Signing up submit pressed");
             console.log("User data:", { name, email, password });
             alert("Signup successful (frontend only)");
-            // Tests passed. Forward the data to the backend from here
+            localStorage.setItem('userName', name);
+            // --- Forward the data to the backend from here ---
             navigate('/home');
         }
     
@@ -57,7 +63,7 @@ const LoginSignup = () => {
                 return;
             }
     
-            // Same as before, check that the user exists in the backend. Also need to actually implement this
+            // --- Same as before, check that the user exists in the backend. Also need to actually implement this ---
             const existingUsers = [
                 { email: "test@example.com", password: "password123" }
             ];
@@ -73,7 +79,8 @@ const LoginSignup = () => {
     
             console.log("Logging in submit pressed");
             alert("Login successful (for frontend testing purposes only)");
-            // Proceed with login to the backend
+            localStorage.setItem('userName', 'Test User');
+            // --- Proceed with login to the backend ---
             navigate('/home');
         }
     };
@@ -92,7 +99,7 @@ const LoginSignup = () => {
     return (
         <div className='container'>
             <div className='header'>
-                <div className='text'>{action}</div>
+                <div className='text'>Self-Hosted OpenVPN</div>
                 <div className='underline'></div>
             </div>
 
@@ -143,6 +150,18 @@ const LoginSignup = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
+
+                {action === "Sign Up" && (
+                    <div className='input'>
+                        <img src={password_icon} alt='' />
+                        <input 
+                            type='password' 
+                            placeholder='Confirm Password' 
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                    </div>
+                )}
             </div>
 
             {error && <div className='error'>{error}</div>}
